@@ -1,7 +1,6 @@
 package main
 
 import (
-	"DIVAYTHGRAM_BACKEND/internal/database"
 	"DIVAYTHGRAM_BACKEND/internal/handlers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
@@ -9,7 +8,7 @@ import (
 )
 
 func main() {
-	database.Init()
+	//database.Init()
 	r := mux.NewRouter()
 	handlers.InitHandlers(r)
 	handler := cors.AllowAll().Handler(r)
