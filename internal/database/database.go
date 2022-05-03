@@ -3,7 +3,6 @@ package database
 import (
 	"DIVAYTHGRAM_BACKEND/internal/models"
 	"fmt"
-	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"os"
@@ -12,10 +11,10 @@ import (
 var db *gorm.DB
 
 func Init() *gorm.DB {
-	err := godotenv.Load()
-	if err != nil {
-		panic("Faild .env file")
-	}
+	//err := godotenv.Load()
+	//if err != nil {
+	//	panic("Faild .env file")
+	//}
 	dbHost := os.Getenv("DB_HOST")
 	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWORD")
