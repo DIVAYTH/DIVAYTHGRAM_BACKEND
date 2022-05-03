@@ -15,5 +15,5 @@ func main() {
 	handler := cors.AllowAll().Handler(r)
 	fileServer := http.FileServer(http.Dir("./static"))
 	r.PathPrefix("/").Handler(http.StripPrefix("/", fileServer))
-	http.ListenAndServe(":8080", handler)
+	http.ListenAndServe(":9123", handler)
 }
