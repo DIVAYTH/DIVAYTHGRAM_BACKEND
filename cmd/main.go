@@ -3,7 +3,6 @@ package main
 import (
 	"DIVAYTHGRAM_BACKEND/internal/database"
 	"DIVAYTHGRAM_BACKEND/internal/handlers"
-	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 	"net/http"
@@ -21,6 +20,5 @@ func main() {
 	if port == "" {
 		port = ":8080"
 	}
-	fmt.Println(":" + port)
-	http.ListenAndServe(port, handler)
+	http.ListenAndServe(":"+port, handler)
 }
