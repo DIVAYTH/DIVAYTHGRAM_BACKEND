@@ -5,6 +5,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -14,5 +15,5 @@ func main() {
 	handler := cors.AllowAll().Handler(r)
 	fileServer := http.FileServer(http.Dir("./static"))
 	r.PathPrefix("/").Handler(http.StripPrefix("/", fileServer))
-	http.ListenAndServe(":9123", handler)
+	http.ListenAndServe(os.Getenv("PORT"), handler)
 }
