@@ -19,8 +19,8 @@ func main() {
 	r.PathPrefix("/").Handler(http.StripPrefix("/", fileServer))
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "3000"
+		port = ":8080"
 	}
-	fmt.Println(port)
+	fmt.Println(":" + port)
 	http.ListenAndServe(port, handler)
 }
