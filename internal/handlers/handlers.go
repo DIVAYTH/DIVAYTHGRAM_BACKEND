@@ -46,7 +46,6 @@ func checkUser(r *http.Request) bool {
 func createUser(w http.ResponseWriter, r *http.Request) {
 	login := r.FormValue("login")
 	password := r.FormValue("password")
-	fmt.Println(1)
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	var user = models.User{Login: login, Password: string(hashedPassword)}
 	err := database.GetDB().Create(&user).Error
@@ -61,10 +60,8 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	f, _ := os.OpenFile("./assets/portrets/"+handler.Filename, os.O_WRONLY|os.O_CREATE, 0666)
 	defer f.Close()
 	io.Copy(f, file)
-	fmt.Println(3)
 	err = database.GetDB().Create(&models.UserAva{Login: login, Ava: f.Name()}).Error
 	if err != nil {
-		fmt.Println(4)
 		log.Println("Error with save Picture")
 		w.WriteHeader(http.StatusForbidden)
 		return

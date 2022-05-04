@@ -12,7 +12,7 @@ import (
 var db *gorm.DB
 
 func Init() *gorm.DB {
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
 		panic("Faild .env file")
 	}
@@ -22,8 +22,7 @@ func Init() *gorm.DB {
 	dbName := os.Getenv("DB_NAME")
 	dbPort := os.Getenv("DB_PORT")
 
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=require",
-		dbHost, dbUser, dbPassword, dbName, dbPort)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", dbHost, dbUser, dbPassword, dbName, dbPort)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)

@@ -5,6 +5,7 @@ import (
 	"DIVAYTHGRAM_BACKEND/internal/handlers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"log"
 	"net/http"
 	"os"
 )
@@ -18,7 +19,8 @@ func main() {
 	r.PathPrefix("/").Handler(http.StripPrefix("/", fileServer))
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = ":8080"
+		port = "8080"
 	}
+	log.Println(port)
 	http.ListenAndServe(":"+port, handler)
 }
